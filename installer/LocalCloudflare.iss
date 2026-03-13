@@ -42,13 +42,13 @@ Source: "..\docs\*"; DestDir: "{app}\docs"; Flags: recursesubdirs ignoreversion
 Source: "..\scripts\windows\*"; DestDir: "{app}\scripts\windows"; Flags: recursesubdirs ignoreversion
 
 [Icons]
-Name: "{group}\初始化向导"; Filename: "{cmd}"; Parameters: "/c \"{app}\scripts\windows\localcloudflare-init.cmd\""
-Name: "{group}\启动服务"; Filename: "{cmd}"; Parameters: "/k \"{app}\scripts\windows\localcloudflare-start.cmd\""
-Name: "{group}\状态检查"; Filename: "{cmd}"; Parameters: "/k \"{app}\scripts\windows\localcloudflare-status.cmd\""
-Name: "{group}\环境检测"; Filename: "{cmd}"; Parameters: "/k \"{app}\scripts\windows\localcloudflare-doctor.cmd\""
+Name: "{group}\初始化向导"; Filename: "{cmd}"; Parameters: "/c ""{app}\scripts\windows\localcloudflare-init.cmd"""
+Name: "{group}\启动服务"; Filename: "{cmd}"; Parameters: "/k ""{app}\scripts\windows\localcloudflare-start.cmd"""
+Name: "{group}\状态检查"; Filename: "{cmd}"; Parameters: "/k ""{app}\scripts\windows\localcloudflare-status.cmd"""
+Name: "{group}\环境检测"; Filename: "{cmd}"; Parameters: "/k ""{app}\scripts\windows\localcloudflare-doctor.cmd"""
 Name: "{group}\卸载 LocalCloudflare"; Filename: "{uninstallexe}"
-Name: "{autodesktop}\LocalCloudflare 初始化向导"; Filename: "{cmd}"; Parameters: "/c \"{app}\scripts\windows\localcloudflare-init.cmd\""; Tasks: desktopicon
+Name: "{autodesktop}\LocalCloudflare 初始化向导"; Filename: "{cmd}"; Parameters: "/c ""{app}\scripts\windows\localcloudflare-init.cmd"""; Tasks: desktopicon
 
 [Run]
-Filename: "powershell.exe"; Parameters: "-ExecutionPolicy Bypass -File \"{app}\scripts\windows\postinstall.ps1\" -InstallDir \"{app}\""; Flags: runhidden waituntilterminated; StatusMsg: "正在安装依赖（Node.js/cloudflared/npm 依赖），首次安装可能需要几分钟..."
-Filename: "{cmd}"; Parameters: "/k \"{app}\scripts\windows\localcloudflare-doctor.cmd\""; Description: "安装完成后立即进行环境检查"; Flags: postinstall skipifsilent
+Filename: "powershell.exe"; Parameters: "-ExecutionPolicy Bypass -File ""{app}\scripts\windows\postinstall.ps1"" -InstallDir ""{app}"""; Flags: runhidden waituntilterminated; StatusMsg: "正在安装依赖（Node.js/cloudflared/npm 依赖），首次安装可能需要几分钟..."
+Filename: "{cmd}"; Parameters: "/k ""{app}\scripts\windows\localcloudflare-doctor.cmd"""; Description: "安装完成后立即进行环境检查"; Flags: postinstall skipifsilent
