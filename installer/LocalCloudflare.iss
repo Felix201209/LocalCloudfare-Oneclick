@@ -15,8 +15,8 @@ AppUpdatesURL={#MyAppURL}
 DefaultDirName={autopf}\LocalCloudflare
 DefaultGroupName=LocalCloudflare
 AllowNoIcons=yes
-LicenseFile=LICENSE
-OutputDir=dist-installer
+LicenseFile=..\LICENSE
+OutputDir=..\dist-installer
 OutputBaseFilename=LocalCloudflare-Setup
 Compression=lzma
 SolidCompression=yes
@@ -30,16 +30,16 @@ Name: "chinesesimp"; MessagesFile: "compiler:Default.isl"
 Name: "desktopicon"; Description: "创建桌面快捷方式"; GroupDescription: "附加任务:"; Flags: unchecked
 
 [Files]
-Source: "package.json"; DestDir: "{app}"; Flags: ignoreversion
-Source: "package-lock.json"; DestDir: "{app}"; Flags: ignoreversion
-Source: "tsconfig.json"; DestDir: "{app}"; Flags: ignoreversion
-Source: "README.md"; DestDir: "{app}"; Flags: ignoreversion
-Source: ".env.example"; DestDir: "{app}"; Flags: ignoreversion
-Source: "LICENSE"; DestDir: "{app}"; Flags: ignoreversion
-Source: "dist\*"; DestDir: "{app}\dist"; Flags: recursesubdirs ignoreversion
-Source: "src\*"; DestDir: "{app}\src"; Flags: recursesubdirs ignoreversion
-Source: "docs\*"; DestDir: "{app}\docs"; Flags: recursesubdirs ignoreversion
-Source: "scripts\windows\*"; DestDir: "{app}\scripts\windows"; Flags: recursesubdirs ignoreversion
+Source: "..\package.json"; DestDir: "{app}"; Flags: ignoreversion
+Source: "..\package-lock.json"; DestDir: "{app}"; Flags: ignoreversion
+Source: "..\tsconfig.json"; DestDir: "{app}"; Flags: ignoreversion
+Source: "..\README.md"; DestDir: "{app}"; Flags: ignoreversion
+Source: "..\.env.example"; DestDir: "{app}"; Flags: ignoreversion
+Source: "..\LICENSE"; DestDir: "{app}"; Flags: ignoreversion
+Source: "..\dist\*"; DestDir: "{app}\dist"; Flags: recursesubdirs ignoreversion
+Source: "..\src\*"; DestDir: "{app}\src"; Flags: recursesubdirs ignoreversion
+Source: "..\docs\*"; DestDir: "{app}\docs"; Flags: recursesubdirs ignoreversion
+Source: "..\scripts\windows\*"; DestDir: "{app}\scripts\windows"; Flags: recursesubdirs ignoreversion
 
 [Icons]
 Name: "{group}\初始化向导"; Filename: "{cmd}"; Parameters: "/c \"{app}\scripts\windows\localcloudflare-init.cmd\""

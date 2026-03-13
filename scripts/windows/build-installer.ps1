@@ -13,5 +13,8 @@ if (-not (Test-Path $iscc)) {
 
 Write-Host "[build-installer] compiling Inno Setup script"
 & $iscc "installer\LocalCloudflare.iss"
+if ($LASTEXITCODE -ne 0) {
+  throw "Inno Setup 编译失败，退出码: $LASTEXITCODE"
+}
 
 Write-Host "[build-installer] done: dist-installer\LocalCloudflare-Setup.exe"
