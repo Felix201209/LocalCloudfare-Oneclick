@@ -11,7 +11,8 @@
     "build": "tsc -p tsconfig.json",
     "dev": "tsx src/index.ts",
     "start": "node dist/index.js",
-    "lint": "tsc --noEmit"
+    "lint": "tsc --noEmit",
+    "build:installer:win": "powershell -ExecutionPolicy Bypass -File ./scripts/windows/build-installer.ps1"
   },
   "engines": {
     "node": ">=18"

@@ -21,9 +21,31 @@ LocalCloudflare Oneclick 提供一个可运行的 MVP：
 
 ---
 
-## 2. 安装
+## 2. Windows 一键安装包（推荐）
 
-### 2.1 先决条件（Windows 推荐）
+### 2.1 获取 `LocalCloudflare-Setup.exe`
+
+- 方式 A：在 GitHub Actions 的 `build-windows-installer` 工作流下载构建产物
+- 方式 B：在 Release（后续）下载已签名安装包
+
+### 2.2 双击安装后会自动做什么
+
+1. 安装程序复制 CLI 文件到 `C:\Program Files\LocalCloudflare`
+2. 自动检查并安装依赖（优先 `winget`）：
+   - Node.js LTS
+   - cloudflared
+3. 自动执行 `npm install --omit=dev` + `npm run build`
+4. 创建开始菜单入口：
+   - 初始化向导
+   - 启动服务
+   - 状态检查
+   - 环境检测
+
+> 首次安装需联网，可能持续几分钟。
+
+## 3. 源码安装（开发者）
+
+### 3.1 先决条件（Windows 推荐）
 
 ```powershell
 winget install OpenJS.NodeJS.LTS
@@ -31,7 +53,7 @@ winget install Cloudflare.cloudflared
 winget install Git.Git
 ```
 
-### 2.2 获取并安装依赖
+### 3.2 获取并安装依赖
 
 ```bash
 git clone https://github.com/Felix201209/LocalCloudfare-Oneclick.git
@@ -48,7 +70,7 @@ npm run dev -- doctor
 
 ---
 
-## 3. 如何运行 CLI 向导
+## 4. 如何运行 CLI 向导
 
 ### 3.1 环境检查
 
@@ -90,7 +112,7 @@ npm run dev -- status
 
 ---
 
-## 4. Cloudflare API Token 配置
+## 5. Cloudflare API Token 配置
 
 MVP 使用环境变量读取 Token（默认变量名 `CLOUDFLARE_API_TOKEN`）。
 
@@ -112,7 +134,7 @@ CF_ACCESS_AUD=
 
 ---
 
-## 5. 如何启动 cloudflared
+## 6. 如何启动 cloudflared
 
 `init` 完成后会生成配置文件：
 
@@ -133,7 +155,7 @@ $env:USERPROFILE/.localcloudflare/generated/install-cloudflared-service.ps1
 
 ---
 
-## 6. 如何验证 app/admin 可访问
+## 7. 如何验证 app/admin 可访问
 
 1. 本机先验证 admin：
    - `http://127.0.0.1:<adminPort>/health`
@@ -144,7 +166,7 @@ $env:USERPROFILE/.localcloudflare/generated/install-cloudflared-service.ps1
 
 ---
 
-## 7. 安全边界与限制（MVP）
+## 8. 安全边界与限制（MVP）
 
 ### 已实现的安全方向
 
@@ -170,7 +192,7 @@ $env:USERPROFILE/.localcloudflare/generated/install-cloudflared-service.ps1
 
 ---
 
-## 8. MVP 目录结构
+## 9. MVP 目录结构
 
 ```text
 src/
@@ -187,6 +209,6 @@ docs/
 
 ---
 
-## 9. 免责声明
+## 10. 免责声明
 
 这是一个可跑通主路径的 MVP，用于快速验证“本地托管 + Cloudflare Tunnel + 受控 admin”模式。生产部署前请阅读 `docs/SECURITY.md` 并补齐 TODO。
